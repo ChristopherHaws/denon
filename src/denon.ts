@@ -3,6 +3,8 @@ import TelnetClient, { ConnectOptions } from 'telnet-client';
 
 export declare interface DenonAVR {
 	on(event: 'raw', listener: (data: Buffer) => void): this;
+	on(event: 'connected', listener: () => void): this;
+	on(event: 'disconnected', listener: () => void): this;
 	on(event: 'powerOn', listener: () => void): this;
 	on(event: 'powerStandby', listener: () => void): this;
 	on(event: 'mainZoneOn', listener: () => void): this;
@@ -32,7 +34,7 @@ export class DenonAVR extends EventEmitter {
 		};
 		this.connection = new TelnetClient();
 	}
-	
+
 	private config: ConnectOptions;
 	public connection: TelnetClient;
 
@@ -45,6 +47,12 @@ export class DenonAVR extends EventEmitter {
 			this.parseData(data);
 		});
 
+		this.connection.on('ready', () => {
+			this.emit('connected');
+		});
+		this.connection.on('close', () => {
+			this.emit('disconnected');
+		});
 		await this.connection.connect(this.config);
 	}
 
@@ -99,7 +107,7 @@ export class DenonAVR extends EventEmitter {
 				}
 			}
 		});
-	
+
 		throw new Error('Failed to parse response');
 	}
 
