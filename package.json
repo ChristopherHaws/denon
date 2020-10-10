@@ -10,8 +10,9 @@
 	"bugs": {
 		"url": "https://github.com/ChristopherHaws/denon/issues"
 	},
-	"main": "./lib/main.js",
-	"types": "./lib/main.d.ts",
+	"main": "./lib/index.js",
+	"module": "lib/index.js",
+	"types": "./lib/index.d.ts",
 	"scripts": {
 		"clean": "rimraf dist",
 		"build": "npm run clean && npm run build:ts",
