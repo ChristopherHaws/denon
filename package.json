@@ -1,6 +1,6 @@
 {
 	"name": "@chaws/denon",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Denon AVR integration for Node",
 	"author": "ChristopherHaws",
 	"license": "MIT",
