@@ -31,11 +31,12 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+          always-auth: true
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
   publish-gpr:
     needs: build
@@ -47,6 +48,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
+          always-auth: true
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn publish
