@@ -1,11 +1,14 @@
 {
-	"name": "denon",
+	"name": "@chaws/denon",
 	"version": "0.0.1",
 	"description": "Denon AVR integration for Node",
 	"author": "ChristopherHaws",
 	"license": "MIT",
 	"private": false,
-	"repository": "https://github.com/ChristopherHaws/denon.git",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ChristopherHaws/denon.git"
+	},
 	"homepage": "https://github.com/ChristopherHaws/denon#readme",
 	"bugs": {
 		"url": "https://github.com/ChristopherHaws/denon/issues"
@@ -29,5 +32,8 @@
 	},
 	"dependencies": {
 		"telnet-client": "^1.4.6"
+	},
+	"directories": {
+		"doc": "docs"
 	}
 }
