@@ -56,6 +56,10 @@ export class DenonAVR extends EventEmitter {
 		await this.connection.connect(this.config);
 	}
 
+	public async disconnect() {
+		await this.connection.destroy();
+	}
+
 	/**
 	 * Send a command when we expect a single response
 	 *
