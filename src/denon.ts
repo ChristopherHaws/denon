@@ -100,7 +100,7 @@ export class DenonAVR extends EventEmitter {
 	public parseResponse(data: string[], prefix: string | RegExp): Promise<string> {
 		// TODO: The way this worked before there could be many callbacks
 		// Check to see if that is necessary
-		data.forEach(item => {
+		for (const item of data) {
 			if (prefix instanceof RegExp) {
 				if (item.match(prefix)) {
 					return item;
@@ -110,7 +110,7 @@ export class DenonAVR extends EventEmitter {
 					return item.substring(prefix.length);
 				}
 			}
-		});
+		}
 
 		throw new Error('Failed to parse response');
 	}
